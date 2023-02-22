@@ -1,5 +1,6 @@
 const request = require('request')
 
+const POSITION = process.env.POSITION;
 
 const geocode = (address, callback) => {
     
@@ -11,7 +12,7 @@ const geocode = (address, callback) => {
     //Handling addresses with special characters
     const urlFormattedAddress = encodeURIComponent(address);
     
-    const url = `http://api.positionstack.com/v1/forward?access_key=e81f7958e4d10405168afa371af2a318&query=${urlFormattedAddress}&limit=1`    
+    const url = `http://api.positionstack.com/v1/forward?access_key=${POSITION}&query=${urlFormattedAddress}&limit=1`    
     
     request({ url, json:true}, (err, res) => {
         if (err) {
